@@ -26,14 +26,14 @@ public class DataInitializer implements CommandLineRunner {
         // ============================================
         if (equipoRepository.count() == 0) {
             String[][] equipos = {
-                {"Atlanta", "Primera Nacional", "Argentina"},
-                {"Barracas Central", "Primera Nacional", "Argentina"},
-                {"Defensores de Belgrano", "Primera Nacional", "Argentina"},
-                {"Deportivo Riestra", "Primera Nacional", "Argentina"},
-                {"Sacachispas", "Primera Nacional", "Argentina"},
-                {"Tristán Suárez", "Primera Nacional", "Argentina"},
-                {"Almagro", "Primera Nacional", "Argentina"},
-                {"Comunicaciones", "Primera Nacional", "Argentina"}
+                {"River", "Primera", "Argentina"},
+                {"Boca", "Primera", "Argentina"},
+                {"Barracas Central", "Primera", "Argentina"},
+                {"Deportivo Riestra", "Primera", "Argentina"},
+                {"San Lorenzo", "Primera", "Argentina"},
+                {"Huracan", "Primera", "Argentina"},
+                {"Velez Sarfield", "Primera", "Argentina"},
+                {"Argentinos Juniors", "Primera", "Argentina"}
             };
             
             for (String[] equipo : equipos) {
@@ -53,10 +53,7 @@ public class DataInitializer implements CommandLineRunner {
             String[] categorias = {
                 "Remera Titular", 
                 "Remera Suplente", 
-                "Remera Alternativa", 
-                "Campera", 
-                "Short", 
-                "Medias",
+                "Talle",
                 "Retro",
                 "Versión Fan",
                 "Versión Jugador"
