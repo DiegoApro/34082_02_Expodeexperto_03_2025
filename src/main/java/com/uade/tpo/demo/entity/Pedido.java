@@ -28,4 +28,22 @@ public class Pedido {
     
     @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
     private Pago pago;
+
+    @ManyToOne
+@JoinColumn(name = "descuento_id")
+private Descuento descuento;  
+
+public Double getSubtotal() {
+    return detalles.stream()
+        .mapToDouble(d -> d.getPrecioUnitario() * d.getCantidad())
+        .sum();
+}
+
+public Double getTotal() {
+    Double subtotal = getSubtotal();
+    if (descuento != null && descuento.getActivo()) {
+        return subtotal - (subtotal * descuento.getPorcentaje() / 100);
+    }
+    return subtotal;
+}
 }

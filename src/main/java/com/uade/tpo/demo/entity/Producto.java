@@ -34,4 +34,16 @@ public class Producto {
     
     @Column
     private String imagenUrl; // Para almacenar URL de la imagen del producto
+
+    @ManyToOne
+    @JoinColumn(name = "descuento_id")
+    private Descuento descuento;  
+
+//método para calcular precio con descuento
+public Double getPrecioFinal() {
+    if (descuento != null && descuento.getActivo()) {
+        return precio - (precio * descuento.getPorcentaje() / 100);
+    }
+    return precio;
+}
 }
