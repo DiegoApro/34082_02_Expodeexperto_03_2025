@@ -13,7 +13,6 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 
 import lombok.RequiredArgsConstructor;
 
-/* */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor

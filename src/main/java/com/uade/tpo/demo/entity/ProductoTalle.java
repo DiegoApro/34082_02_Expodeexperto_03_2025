@@ -1,5 +1,6 @@
 package com.uade.tpo.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ public class ProductoTalle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "producto_id", nullable = false)
     private Producto producto;

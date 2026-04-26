@@ -52,7 +52,7 @@ public class PedidoService {
             detallePedidoRepository.save(detalle);
         }
         
-        return savedPedido;
+        return pedidoRepository.findById(savedPedido.getId()).orElseThrow();
     }
     
     public List<Pedido> getPedidosByUser(Long userId) {

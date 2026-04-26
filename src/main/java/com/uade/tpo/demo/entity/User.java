@@ -1,5 +1,6 @@
 package com.uade.tpo.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,9 +29,10 @@ public class User implements UserDetails {
     @Column(nullable = false, unique = true)
     private String email;
     
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
-    
+
     @Column(nullable = false)
     private String direccion; // Para envíos
     
@@ -40,12 +42,13 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
     
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
     
     @Override
