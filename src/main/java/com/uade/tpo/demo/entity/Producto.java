@@ -2,6 +2,7 @@ package com.uade.tpo.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -32,8 +33,13 @@ public class Producto {
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
     private List<ProductoTalle> productoTalles;
     
-    @Column
-    private String imagenUrl; // Para almacenar URL de la imagen del producto
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "producto_imagenes", joinColumns = @JoinColumn(name = "producto_id"))
+    @Column(name = "imagen_url")
+    private List<String> imagenesUrl = new ArrayList<>();
+
+    @Column(nullable = false)
+    private boolean activo = true;
 
     @ManyToOne
     @JoinColumn(name = "descuento_id")

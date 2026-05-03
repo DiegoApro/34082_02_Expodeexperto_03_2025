@@ -1,6 +1,8 @@
 package com.uade.tpo.demo.controllers.productos;
 
 import lombok.Data;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class ProductoRequest {
@@ -9,5 +11,5 @@ public class ProductoRequest {
     private Double precio;
     private Long equipoId;
     private Long categoriaId;
-    private String imagenUrl;
+    private List<String> imagenesUrl = new ArrayList<>();
 }

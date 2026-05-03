@@ -27,11 +27,11 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(req -> req
                 .requestMatchers("/api/v1/auth/**").permitAll()
-                .requestMatchers("/api/productos/**").permitAll()  // Permitir ver productos sin autenticación
-                .requestMatchers("/categories/**").permitAll()      // Permitir ver categorías
-                .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
-                .anyRequest()
-                .authenticated())
+                .requestMatchers("/api/productos/**").permitAll()
+                .requestMatchers("/categories/**").permitAll()
+                .requestMatchers("/api/equipos/**").permitAll()
+                .requestMatchers("/api/talles/**").permitAll()
+                .anyRequest().authenticated())
             .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
             .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

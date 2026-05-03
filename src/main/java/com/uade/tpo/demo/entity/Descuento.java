@@ -1,5 +1,6 @@
 package com.uade.tpo.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,11 +38,11 @@ public class Descuento {
     
     private String descripcion;
     
-    // Relación con Productos
+    @JsonIgnore
     @OneToMany(mappedBy = "descuento")
     private List<Producto> productos;
-    
-    // Relación con Ordenes
+
+    @JsonIgnore
     @OneToMany(mappedBy = "descuento")
     private List<Pedido> pedidos;
 }
