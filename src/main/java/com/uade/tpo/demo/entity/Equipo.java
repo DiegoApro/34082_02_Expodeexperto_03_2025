@@ -11,6 +11,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 @Data
 @Entity
 @Table(name = "equipos")
@@ -26,6 +29,7 @@ public class Equipo {
     
     private String pais;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "equipo")
     private List<Producto> productos;
 }

@@ -23,7 +23,7 @@ public class Pedido {
     @JoinColumn(name = "usuario_id", nullable = false)
     private User usuario;
     
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<DetallePedido> detalles;
     
     @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)

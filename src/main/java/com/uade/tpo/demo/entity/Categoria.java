@@ -1,5 +1,6 @@
 package com.uade.tpo.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.List;
@@ -15,6 +16,7 @@ public class Categoria {
     @Column(nullable = false, unique = true)
     private String nombre;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "categoria")
     private List<Producto> productos;
 }

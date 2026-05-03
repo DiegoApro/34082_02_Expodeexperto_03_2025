@@ -1,5 +1,6 @@
 package com.uade.tpo.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.List;
@@ -13,8 +14,9 @@ public class Talle {
     private Long id;
     
     @Column(nullable = false, unique = true)
-    private String nombre; // S, M, L, XL, etc.
+    private String nombre;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "talle")
     private List<ProductoTalle> productoTalles;
 }
