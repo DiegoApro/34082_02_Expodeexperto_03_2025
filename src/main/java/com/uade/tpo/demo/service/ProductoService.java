@@ -98,6 +98,15 @@ public class ProductoService {
     }
 
     @Transactional
+    public Producto actualizarImagenUrl(Long productoId, String imagenUrl) {
+        Producto producto = productoRepository.findByIdAndActivoTrue(productoId)
+            .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        producto.getImagenesUrl().clear();
+        producto.getImagenesUrl().add(imagenUrl);
+        return productoRepository.save(producto);
+    }
+
+    @Transactional
     public Producto agregarImagen(Long productoId, String url) {
         Producto producto = productoRepository.findByIdAndActivoTrue(productoId)
             .orElseThrow(() -> new RuntimeException("Producto no encontrado"));

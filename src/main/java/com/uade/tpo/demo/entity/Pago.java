@@ -1,5 +1,6 @@
 package com.uade.tpo.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -26,5 +27,6 @@ public class Pago {
     
     @OneToOne
     @JoinColumn(name = "pedido_id", nullable = false)
+    @JsonIgnoreProperties({"pago", "detalles", "usuario"})
     private Pedido pedido;
 }

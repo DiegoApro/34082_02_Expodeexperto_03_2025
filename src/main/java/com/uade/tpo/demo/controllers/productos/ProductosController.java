@@ -112,6 +112,14 @@ public class ProductosController {
         return ResponseEntity.ok(productoService.eliminarImagen(id, body.get("url")));
     }
 
+    @PatchMapping("/{id}/imagen")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Producto> actualizarImagen(
+            @PathVariable Long id,
+            @RequestBody ImagenRequest request) {
+        return ResponseEntity.ok(productoService.actualizarImagenUrl(id, request.getImagenUrl()));
+    }
+
     @PostMapping("/{id}/stock")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> addStock(@PathVariable Long id, @RequestBody StockRequest request) {
